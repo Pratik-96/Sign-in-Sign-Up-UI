@@ -1,6 +1,6 @@
 package com.example.login_signup;
 
-import static com.example.login_signup.MainActivity.user_mail;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +22,9 @@ public class Log_In extends AppCompatActivity {
     CheckBox chkbx;
     Button Login;
 
-    EditText name,email,pass;
+    EditText name;
+    static EditText email;
+    EditText pass;
 
     dbHandler handler;
 
@@ -38,7 +40,7 @@ public class Log_In extends AppCompatActivity {
         txt.setText(Html.fromHtml(url));
         txt2 = findViewById(R.id.sign);
         Login = findViewById(R.id.button);
-        email=findViewById(R.id.editTextTextEmailAddress);
+         email=findViewById(R.id.editTextTextEmailAddress);
         pass=findViewById(R.id.password);
 
 
@@ -92,8 +94,8 @@ public class Log_In extends AppCompatActivity {
 
             Toast.makeText(Log_In.this, "Logging in..", Toast.LENGTH_SHORT).show();
 //                    Log.d("btn", "onClick: Button is working properly..");
-            Intent home = new Intent(this,HomePage.class);
-            home.putExtra(mail,user_mail);
+            Intent home = new Intent(getApplicationContext(),HomePage.class);
+
             startActivity(home);
         } else if (checked[0] == 0) {
             Toast.makeText(Log_In.this, "Please Accept our Terms And Conditions.", Toast.LENGTH_SHORT).show();
@@ -102,6 +104,11 @@ public class Log_In extends AppCompatActivity {
     }
 
 
+public static String share()
+{
+    String mail = email.getText().toString();
+    return mail;
+}
 
     public void signup(View v) {
         Intent act2 = new Intent(this, MainActivity.class);

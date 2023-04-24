@@ -21,9 +21,13 @@ public class MainActivity extends AppCompatActivity {
     private Button Signup;
     private TextView reg;
 
-    private EditText Pass1, Pass2, Name,email,phone;
+    private EditText Pass1;
+    private EditText Pass2;
+    private EditText Name;
+    private static EditText email;
+    private EditText phone;
     final int[] checked = new int[1];
-    public static final String user_mail = "";
+//    public static final String user_mail = "";
 
     dbHandler handler;
 
@@ -126,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 if (Insert==true)
                 {
                     Toast.makeText(MainActivity.this, "Signing Up..", Toast.LENGTH_SHORT).show();
-                    Intent home = new Intent(this,HomePage.class);
+                    Intent home = new Intent(this,Log_In.class);
                     startActivity(home);
                 }
                 else
@@ -151,5 +155,7 @@ public class MainActivity extends AppCompatActivity {
             
 
         }
+
     }
+
 }

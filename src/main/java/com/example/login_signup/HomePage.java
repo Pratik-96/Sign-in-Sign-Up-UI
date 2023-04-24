@@ -1,7 +1,8 @@
 package com.example.login_signup;
 
 
-import static com.example.login_signup.MainActivity.user_mail;
+import static com.example.login_signup.Log_In.user_mail;
+//import static com.example.login_signup.MainActivity.user_mail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,22 +25,24 @@ dbHandler handler;
         handler = new dbHandler(this,"U",null,1);
         txt = findViewById(R.id.Welcome);
                 Intent HomeAct = getIntent();
-String name="NULL";
+                String name="NULL";
 
-            String mail = HomeAct.getStringExtra(user_mail);
-             Cursor cursor = handler.getdet(mail);
-             cursor.moveToFirst();
-            if (cursor.getCount()==0)
+            String mail = Log_In.share();
+
+//            txt.setText(mail);
+            Cursor c = handler.getdet(mail);
+            if (c.getCount()==0)
             {
-                Toast.makeText(this, "errr", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
             }
             else
             {
-                if (cursor.moveToNext())
+                while (c.moveToNext())
                 {
-                    name = cursor.getString(0);
+                    name = c.getString(0);
                 }
             }
+
 
             txt.setText("Hello "+name);
 

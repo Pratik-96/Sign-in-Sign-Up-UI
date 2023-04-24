@@ -2,6 +2,7 @@ package com.example.login_signup;
 
 public class user {
 
+
     private String name;
     private String email;
     private String Pass;

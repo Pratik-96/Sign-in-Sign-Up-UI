@@ -69,13 +69,15 @@ public class dbHandler extends SQLiteOpenHelper {
 
     }
 
-    public Cursor getdet(String mail)
-    {
-        String name="Not found";
+    public Cursor getdet(String mail) {
+        String name = "Not found";
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("select name from User where email="+mail,null);
-
-    }
+Cursor c =null;
+        if (db!=null){
+            c = db.rawQuery("select name from User where email=?",new String[]{mail});
+        }
+    return c;
+}
 
 
 }
