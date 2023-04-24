@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".Log_In">
 <ScrollView
 android:layout_width="match_parent"
@@ -34,7 +33,7 @@ app:layout_constraintVertical_bias="0.5">
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
         android:textColor="@color/primary"
-        android:fontFamily="cursive"
+        android:fontFamily="serif"
         android:textSize="30sp"
 
         />
@@ -54,35 +53,13 @@ app:layout_constraintVertical_bias="0.5">
         android:textSize="18sp"/>
 
     <EditText
-        android:id="@+id/Name"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_input"
-        android:paddingLeft="10dp"
-        android:drawablePadding="@dimen/text_margin"
-        android:paddingEnd="10dp"
-
-        android:digits="@string/alphabets"
-        android:ems="10"
-        android:drawableStart="@drawable/custom_person"
-        android:fontFamily="sans-serif"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif"
-        android:drawablePadding="@dimen/text_margin"
+        android:drawablePadding="10dp"
         android:paddingEnd="10dp"
 
         android:textStyle="bold"
@@ -99,7 +76,7 @@ app:layout_constraintVertical_bias="0.5">
     <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
         android:ems="10"
@@ -114,7 +91,7 @@ app:layout_constraintVertical_bias="0.5">
         android:inputType="textPassword"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:drawablePadding="@dimen/text_margin"
+        android:drawablePadding="10dp"
 
         />
 

@@ -1,6 +1,6 @@
 package com.example.login_signup;
 
-import static com.example.login_signup.MainActivity.user_name;
+import static com.example.login_signup.MainActivity.user_mail;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -21,9 +22,11 @@ public class Log_In extends AppCompatActivity {
     CheckBox chkbx;
     Button Login;
 
-    EditText txt3;
+    EditText name,email,pass;
 
+    dbHandler handler;
 
+    public static final String user_mail = "";
     final int[] checked = new int[1];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,9 @@ public class Log_In extends AppCompatActivity {
         txt.setText(Html.fromHtml(url));
         txt2 = findViewById(R.id.sign);
         Login = findViewById(R.id.button);
-        txt3 = findViewById(R.id.Name);
+        email=findViewById(R.id.editTextTextEmailAddress);
+        pass=findViewById(R.id.password);
+
 
 
         String txt3 = "Don't have an Account ? <a href=''>Sign Up</a>";
@@ -76,12 +81,19 @@ public class Log_In extends AppCompatActivity {
     }
     public void login(View view){
 //        Check box Checking && Name checking
-        if (checked[0] == 1) {
+
+        String key = pass.getText().toString();
+        String mail = email.getText().toString();
+        handler = new dbHandler(this,"U",null,1);
+        if (handler.chkemailpass(mail,key)==false){         // Password checking
+            Toast.makeText(this, "User Not Found..", Toast.LENGTH_SHORT).show();
+        }
+        else if (checked[0] == 1 && handler.chkemailpass(mail,key)==true) {
+
             Toast.makeText(Log_In.this, "Logging in..", Toast.LENGTH_SHORT).show();
 //                    Log.d("btn", "onClick: Button is working properly..");
-            String name = txt3.getText().toString();
             Intent home = new Intent(this,HomePage.class);
-            home.putExtra(user_name,name);
+            home.putExtra(mail,user_mail);
             startActivity(home);
         } else if (checked[0] == 0) {
             Toast.makeText(Log_In.this, "Please Accept our Terms And Conditions.", Toast.LENGTH_SHORT).show();
